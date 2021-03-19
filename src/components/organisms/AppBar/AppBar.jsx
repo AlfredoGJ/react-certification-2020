@@ -17,18 +17,19 @@ const StyledSearchIcon = styled(IconButton)`
   /* margin-left: 2rem;
   border: 1px solid red; */
 `;
+
 const AppBar = () => {
   return (
     <AppBarBase>
-      <Grid justify="space-between" width={12}>
-        <Grid width={3}>
+      <Grid justify="space-between" xs={12}>
+        <Grid xs={2} sm={2} md={2} lg={2} xl={2}>
           <IconButton iconName="bars" color="textDark" size={1} rounded />
         </Grid>
-        <Grid justify="space-evenly" direction="row" width={6}>
-          <Grid width={12} padding={{ right: 0.2 }}>
+        <Grid justify="space-evenly" direction="row" xs={8} sm={8} md={8} lg={8} xl={8}>
+          <Grid xs={10} sm={10} md={10} lg={10} xl={10} padding={{ right: 0.2 }}>
             <Input placeholder="Search something..." />
           </Grid>
-          <Grid width={1}>
+          <Grid xs={2} sm={2} md={2} lg={2} xl={2}>
             <StyledSearchIcon
               color="textDark"
               size={1.2}
@@ -38,7 +39,7 @@ const AppBar = () => {
             />
           </Grid>
         </Grid>
-        <Grid width={3} direction="row-reverse">
+        <Grid direction="row-reverse" xs={2} sm={2} md={2} lg={2} xl={2}>
           <Avatar src="https://picsum.photos/200/300" size={2} shape="circle" />
         </Grid>
       </Grid>

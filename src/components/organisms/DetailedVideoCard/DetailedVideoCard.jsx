@@ -19,21 +19,17 @@ const DetailedVideoCard = ({
   videoTitle,
 }) => {
   return (
-    <Grid
-      direction="column"
-      width={12}
-      padding={{ top: 1, left: 1, right: 1, bottom: 1 }}
-    >
-      <Grid width={12}>
+    <Grid direction="column" xs={12} padding={{ top: 1, left: 1, right: 1, bottom: 1 }}>
+      <Grid xs={12}>
         <CardImage src={thumbnail} />
       </Grid>
-      <Grid width={12} padding={{ top: 0.5 }}>
+      <Grid xs={12} padding={{ top: 0.5 }}>
         <Text variant="body">{videoTitle}</Text>
       </Grid>
-      <Grid width={12}>
+      <Grid xs={12}>
         <Text variant="body2">{description}</Text>
       </Grid>
-      <Grid width={12} padding={{ top: 0.5 }}>
+      <Grid xs={12} padding={{ top: 0.5 }}>
         <ChannelWidget channelName={channelName} imageSource={channelImage} />
       </Grid>
     </Grid>

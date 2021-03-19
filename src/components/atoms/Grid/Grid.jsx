@@ -9,14 +9,42 @@ const StyledGrid = styled.div`
   align-items: ${(props) => props.alignItems};
   align-content: ${(props) => props.alignContent};
   flex-wrap: wrap;
-  flex-basis: ${(props) => {
-    if (props.width <= 12) return `${props.width * 8.333333333333}%`;
-    return '100%';
-  }};
-  max-width: ${(props) => {
-    if (props.width <= 12) return `${props.width * 8.333333333333}%`;
-    return '100%';
-  }};
+
+  @media (min-width: 320px) {
+    width: ${(props) => {
+      if (props.xs <= 12) return `${props.xs * 8.333333333333}%`;
+      return '100%';
+    }};
+  }
+
+  @media (min-width: 481px) {
+    width: ${(props) => {
+      if (props.sm <= 12) return `${props.sm * 8.333333333333}%`;
+      return '100%';
+    }};
+  }
+
+  @media (min-width: 769px) {
+    width: ${(props) => {
+      if (props.md <= 12) return `${props.md * 8.333333333333}%`;
+      return '100%';
+    }};
+  }
+
+  @media (min-width: 1025px) {
+    width: ${(props) => {
+      if (props.lg <= 12) return `${props.lg * 8.333333333333}%`;
+      return '100%';
+    }};
+  }
+
+  @media (min-width: 1201px) {
+    width: ${(props) => {
+      if (props.xl <= 12) return `${props.xl * 8.333333333333}%`;
+      return '100%';
+    }};
+  }
+
   ${(props) => console.log(props)}
   padding-top: ${(props) => props.padding && (props.padding.top || '0rem')}rem;
   padding-bottom: ${(props) => props.padding && (props.padding.bottom || '0rem')}rem;
@@ -31,10 +59,14 @@ const Grid = (props) => {
 
 Grid.defaultProps = {
   direction: 'row',
-  justify: 'center',
-  alignItems: 'center',
-  alignContent: 'center',
-  width: 12,
+  justify: 'space-between',
+  alignItems: 'flex-start',
+  alignContent: 'flex-start',
+  xs: 12,
+  sm: 12,
+  md: 12,
+  lg: 12,
+  xl: 12,
 };
 
 Grid.propTypes = {
@@ -53,10 +85,14 @@ Grid.propTypes = {
     'flex-end',
     'center',
     'stretch',
-    'baselispace-between',
+    'space-between',
     'space-around'
   ),
-  width: PropTypes.oneOf('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'),
+  xs: PropTypes.oneOf('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'),
+  sm: PropTypes.oneOf('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'),
+  md: PropTypes.oneOf('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'),
+  lg: PropTypes.oneOf('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'),
+  xl: PropTypes.oneOf('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'),
 };
 
 export default Grid;

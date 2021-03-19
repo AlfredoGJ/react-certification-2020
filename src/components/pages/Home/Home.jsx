@@ -11,9 +11,9 @@ const StyledHome = styled.div`
 const Home = () => {
   return (
     <StyledHome>
-      <Grid width={12} padding={{ left: 3, right: 3, top: 6, bottom: 2 }}>
+      <Grid direction="" sm={12} padding={{ left: 3, right: 3, top: 6, bottom: 2 }}>
         {mockVideos.items.map((video) => (
-          <Grid width={3}>
+          <Grid xs={12} md={6} lg={3} xl={3}>
             <DetailedVideoCard
               videoTitle={video.snippet.title}
               channelName={video.snippet.channelTitle}
