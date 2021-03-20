@@ -45,7 +45,6 @@ const StyledGrid = styled.div`
     }};
   }
 
-  ${(props) => console.log(props)}
   padding-top: ${(props) => props.padding && (props.padding.top || '0rem')}rem;
   padding-bottom: ${(props) => props.padding && (props.padding.bottom || '0rem')}rem;
   padding-right: ${(props) => props.padding && (props.padding.right || '0rem')}rem;
