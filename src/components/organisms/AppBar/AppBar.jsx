@@ -1,22 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import IconButton from '../../molecules/IconButton/IconButton';
 import Avatar from '../../atoms/Avatar/Avatar';
 import Input from '../../atoms/Input/Input';
 import Grid from '../../atoms/Grid/Grid';
-
-const AppBarBase = styled.div`
-  background-color: ${(props) => props.theme.colors.surface};
-  display: block;
-  padding: 0.5rem;
-  position: fixed;
-  width: 100%;
-`;
-
-const StyledSearchIcon = styled(IconButton)`
-  /* margin-left: 2rem;
-  border: 1px solid red; */
-`;
+import { AppBarBase, StyledSearchIcon } from './AppBar.styled';
 
 const AppBar = () => {
   return (

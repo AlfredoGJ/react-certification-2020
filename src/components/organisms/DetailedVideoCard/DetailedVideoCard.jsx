@@ -1,15 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import Grid from '../../atoms/Grid/Grid';
 import ChannelWidget from '../ChannelWidget/ChannelWidget';
 import Text from '../../atoms/Text/Text';
 
-const CardImage = styled.img`
-  width: 100%;
-  height: 10rem;
-  object-fit: cover;
-  border-radius: 0.8rem;
-`;
+import CardImage from './DetailedVideoCard.styled'
 
 const DetailedVideoCard = ({
   description,

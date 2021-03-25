@@ -1,12 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import Grid from '../../atoms/Grid/Grid';
 import DetailedVideoCard from '../../organisms/DetailedVideoCard/DetailedVideoCard';
 import mockVideos from '../../../mock/mockVideos';
+import StyledHome from './Home.styled'
 
-const StyledHome = styled.div`
-  background-color: ${(props) => props.theme.colors.background};
-`;
 
 const Home = () => {
   return (
