@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Grid from '../../atoms/Grid/Grid';
 import DetailedVideoCard from '../../organisms/DetailedVideoCard/DetailedVideoCard';
-import mockVideos from '../../../mock/mockVideos';
-import StyledHome from './Home.styled'
-
+import StyledHome from './Home.styled';
+import { YoutubeSearchContext } from '../../../providers/Youtube/SearchProvider';
 
 const Home = () => {
+  const [searchResults] = useContext(YoutubeSearchContext);
+  console.log(searchResults);
   return (
     <StyledHome>
       <Grid direction="" sm={12} padding={{ left: 3, right: 3, top: 6, bottom: 2 }}>
-        {mockVideos.items.map((video) => (
+        {searchResults.items.map((video) => (
           <Grid xs={12} md={6} lg={3} xl={3}>
             <DetailedVideoCard
               videoTitle={video.snippet.title}

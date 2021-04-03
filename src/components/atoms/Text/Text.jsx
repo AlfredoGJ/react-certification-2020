@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'proptypes';
-import StyledText from './Text.styled'
+import StyledText from './Text.styled';
 
 const Text = (props) => {
   return <StyledText {...props}>{props.children}</StyledText>;

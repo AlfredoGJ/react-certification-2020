@@ -1,16 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render, screen } from '@testing-library/react';
 import RenderWithTheme from '../../../utils/RenderWithTheme';
 import DetailedVideoCard from './DetailedVideoCard';
 
 describe('component: DetailedVideoCard', () => {
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(
+  it('renders properly', () => {
+    const videoTitle = 'Using React Test Library';
+    const videoDescription =
+      'In this video tutorial I will show you the basics of react testing library';
+
+    render(
       <RenderWithTheme>
-        <DetailedVideoCard />
-      </RenderWithTheme>,
-      div
+        <DetailedVideoCard description={videoDescription} videoTitle={videoTitle} />
+      </RenderWithTheme>
     );
+
+    expect(screen.getByRole('heading', { name: videoTitle })).toBeInTheDocument();
+    expect(screen.getByText(videoDescription)).toBeInTheDocument();
   });
 });

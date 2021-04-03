@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from '../../atoms/Icon/Icon';
-import StyledIconButton from './IconButton.styled'
+import StyledIconButton from './IconButton.styled';
 
 const IconButton = ({ color, size, rounded, background, iconName, onClick }) => {
   return (
