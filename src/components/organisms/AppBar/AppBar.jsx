@@ -8,7 +8,7 @@ import { YoutubeSearchContext } from '../../../providers/Youtube/SearchProvider'
 
 const AppBar = () => {
   const [, search] = useContext(YoutubeSearchContext);
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState('wizeline');
 
   return (
     <AppBarBase>

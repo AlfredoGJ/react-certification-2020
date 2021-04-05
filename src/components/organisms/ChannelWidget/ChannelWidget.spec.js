@@ -14,7 +14,6 @@ describe('component: ChannelWidget', () => {
       </RenderWithTheme>
     );
 
-    expect(screen.getByRole('img', { name: 'channel-image' })).toBeInTheDocument();
     expect(screen.getByText(channelName)).toBeInTheDocument();
   });
 });

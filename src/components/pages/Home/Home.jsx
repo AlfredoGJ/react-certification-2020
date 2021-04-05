@@ -6,17 +6,26 @@ import { YoutubeSearchContext } from '../../../providers/Youtube/SearchProvider'
 
 const Home = () => {
   const [searchResults] = useContext(YoutubeSearchContext);
-  console.log(searchResults);
+
   return (
     <StyledHome>
       <Grid direction="" sm={12} padding={{ left: 3, right: 3, top: 6, bottom: 2 }}>
-        {searchResults.items.map((video) => (
-          <Grid xs={12} md={6} lg={3} xl={3}>
+        {searchResults.map((video) => (
+          <Grid
+            xs={12}
+            md={6}
+            lg={3}
+            xl={3}
+            padding={{ top: 1, left: 1, right: 1, bottom: 1 }}
+          >
             <DetailedVideoCard
-              videoTitle={video.snippet.title}
-              channelName={video.snippet.channelTitle}
-              description={video.snippet.description}
-              thumbnail={video.snippet.thumbnails.high.url}
+              videoId={video.id}
+              key={video.id}
+              videoDuration="3:16" // hardcoded meanwhile
+              videoTitle={video.title}
+              channelName={video.channelTitle}
+              description={video.description}
+              thumbnail={video.thumbnailHigh}
               channelImage="https://picsum.photos/100/100"
             />
           </Grid>

@@ -1,27 +1,41 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { toVideoListFromSearch } from '../../YouTubeAPI';
 
-export default function useYouTubeSearch(initialSearchResult) {
+export default function useYouTubeSearch(initialSearchResult, maxResults = 32) {
   const apiBase = `${process.env.REACT_APP_YT_API_BASE}/search?`;
   const [searchResult, setSearchResult] = useState(initialSearchResult);
 
-  const search = (searchText) => {
+  const search = (searchText, videoId) => {
+    const searchQuery = searchText ? { q: searchText } : {};
+    const searchRelated = videoId ? { relatedToVideoId: videoId } : {};
+
     axios
       .get(apiBase, {
         params: {
-          q: searchText,
           type: 'video',
           key: process.env.REACT_APP_YT_API_KEY,
-          part: 'snippet',
+          part: 'snippet, id',
+          maxResults,
+          ...searchQuery,
+          ...searchRelated,
         },
       })
       .then((result) => {
-        setSearchResult(result.data);
+        setSearchResult(toVideoListFromSearch(result.data.items));
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  return [searchResult, search];
+  const searchQuery = (query) => {
+    search(query, null);
+  };
+
+  const searchRelated = (videoId) => {
+    search(null, videoId);
+  };
+
+  return [searchResult, searchQuery, searchRelated];
 }
