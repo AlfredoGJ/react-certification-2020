@@ -26,7 +26,7 @@ export default function useYouTubeVideo(videoId, fallbackVideo) {
       .catch((error) => {
         console.log(error);
       });
-  }, [videoId, apiBase, searchRelated]);
+  }, [videoId]);
 
   return [video, relatedVideos];
 }
