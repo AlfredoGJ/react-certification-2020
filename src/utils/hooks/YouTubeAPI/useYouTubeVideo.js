@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { toVideoFromSearch } from '../../YouTubeAPI';
+import { toVideoFromVideoDetails } from '../../YouTubeAPI';
 import useYouTubeSearch from './useYouTubeSearch';
 
 export default function useYouTubeVideo(videoId, fallbackVideo) {
@@ -20,7 +20,7 @@ export default function useYouTubeVideo(videoId, fallbackVideo) {
       })
       .then((result) => {
         if (result.data.items.length) {
-          setVideo(toVideoFromSearch(result.data.items[0]));
+          setVideo(toVideoFromVideoDetails(result.data.items[0]));
         }
       })
       .catch((error) => {
