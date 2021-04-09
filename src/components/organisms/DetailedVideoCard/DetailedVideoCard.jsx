@@ -1,8 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Grid from '../../atoms/Grid/Grid';
 import ChannelWidget from '../ChannelWidget/ChannelWidget';
 import Text from '../../atoms/Text/Text';
-
 import { VideoMiniature } from '../../molecules';
 
 const DetailedVideoCard = ({
@@ -18,9 +18,9 @@ const DetailedVideoCard = ({
   return (
     <Grid direction="column" xs={12} xl={12} {...other}>
       <Grid xs={12}>
-        <a href={`/watch/${videoId}`}>
+        <Link to={`/watch/${videoId}`}>
           <VideoMiniature imageSource={thumbnail} duration={videoDuration} />
-        </a>
+        </Link>
       </Grid>
       <Grid xs={12} lg={12} xl={12} padding={{ top: 0.5 }}>
         <Text variant="h3">{videoTitle}</Text>
