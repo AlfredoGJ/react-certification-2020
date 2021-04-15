@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'proptypes';
-import StyledGrid from './Grid.styled'
+import StyledGrid from './Grid.styled';
 
 const Grid = (props) => {
   return <StyledGrid {...props}>{props.children}</StyledGrid>;

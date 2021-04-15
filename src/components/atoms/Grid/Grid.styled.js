@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const StyledGrid = styled.div`
+  word-break: break-all;
   display: flex;
   flex-direction: ${(props) => props.direction};
   justify-content: ${(props) => props.justify};
@@ -42,10 +43,10 @@ const StyledGrid = styled.div`
     }};
   }
 
-  padding-top: ${(props) => props.padding && (props.padding.top || '0rem')}rem;
-  padding-bottom: ${(props) => props.padding && (props.padding.bottom || '0rem')}rem;
-  padding-right: ${(props) => props.padding && (props.padding.right || '0rem')}rem;
-  padding-left: ${(props) => props.padding && (props.padding.left || '0rem')}rem;
+  padding-top: ${(props) => props.padding && (props.padding.top || 0)}rem;
+  padding-bottom: ${(props) => props.padding && (props.padding.bottom || 0)}rem;
+  padding-right: ${(props) => props.padding && (props.padding.right || 0)}rem;
+  padding-left: ${(props) => props.padding && (props.padding.left || 0)}rem;
   flex-flow: ${(props) => props.direction};
 `;
 

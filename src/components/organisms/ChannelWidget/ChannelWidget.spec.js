@@ -1,16 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render, screen } from '@testing-library/react';
 import RenderWithTheme from '../../../utils/RenderWithTheme';
 import ChannelWidget from './ChannelWidget';
 
+const channelImage = require('../../../assets/img/logo512.png');
+
 describe('component: ChannelWidget', () => {
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(
+  it('renders properly', () => {
+    const channelName = 'Wizeline';
+    render(
       <RenderWithTheme>
-        <ChannelWidget />
-      </RenderWithTheme>,
-      div
+        <ChannelWidget imageSource={channelImage} channelName={channelName} />
+      </RenderWithTheme>
     );
+
+    expect(screen.getByText(channelName)).toBeInTheDocument();
   });
 });

@@ -3,22 +3,27 @@ import Grid from '../../atoms/Grid/Grid';
 import ChannelWidget from '../ChannelWidget/ChannelWidget';
 import Text from '../../atoms/Text/Text';
 
-import CardImage from './DetailedVideoCard.styled'
+import { VideoMiniature } from '../../molecules';
 
 const DetailedVideoCard = ({
+  videoId,
   description,
   thumbnail,
   channelName,
   channelImage,
   videoTitle,
+  videoDuration,
+  ...other
 }) => {
   return (
-    <Grid direction="column" xs={12} padding={{ top: 1, left: 1, right: 1, bottom: 1 }}>
+    <Grid direction="column" xs={12} xl={12} {...other}>
       <Grid xs={12}>
-        <CardImage src={thumbnail} />
+        <a href={`/watch/${videoId}`}>
+          <VideoMiniature imageSource={thumbnail} duration={videoDuration} />
+        </a>
       </Grid>
-      <Grid xs={12} padding={{ top: 0.5 }}>
-        <Text variant="body">{videoTitle}</Text>
+      <Grid xs={12} lg={12} xl={12} padding={{ top: 0.5 }}>
+        <Text variant="h3">{videoTitle}</Text>
       </Grid>
       <Grid xs={12}>
         <Text variant="body2">{description}</Text>
