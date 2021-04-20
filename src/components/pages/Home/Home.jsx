@@ -1,11 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Grid from '../../atoms/Grid/Grid';
 import DetailedVideoCard from '../../organisms/DetailedVideoCard/DetailedVideoCard';
 import StyledHome from './Home.styled';
-import { YoutubeSearchContext } from '../../../providers/Youtube/SearchProvider';
+import useYouTubeSearch from '../../../utils/hooks/YouTubeAPI/useYouTubeSearch';
+import { GlobalContext } from '../../../providers/GlobalContext/GlobalContextProvider';
 
 const Home = () => {
-  const [searchResults] = useContext(YoutubeSearchContext);
+  const [state] = useContext(GlobalContext);
+  const [searchResults, search] = useYouTubeSearch([], 32);
+
+  useEffect(() => {
+    search(state.searchText);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    search(state.lastSearch);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.lastSearch]);
 
   return (
     <StyledHome>

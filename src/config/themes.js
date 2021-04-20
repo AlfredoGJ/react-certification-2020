@@ -9,6 +9,20 @@ const themes = {
       textLight: '#ACACAC',
       success: '#4EDA92',
       surface: '#FFFFFF',
+      white: 'fff',
+    },
+  },
+  dark: {
+    colors: {
+      accent: '#015192',
+      background: '#3b3b3b',
+      backgroundDark: '#616161',
+      text: '#d6d6d6',
+      textDark: '#888888',
+      textLight: '#bdbbbb',
+      success: '#4EDA92',
+      surface: '#464646',
+      white: 'fff',
     },
   },
 };
