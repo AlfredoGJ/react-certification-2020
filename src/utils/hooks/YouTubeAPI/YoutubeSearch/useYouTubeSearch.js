@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { toVideoListFromSearch } from '../../YouTubeAPI';
+import { toVideoListFromSearch } from '../../../YouTubeAPI';
 
 export default function useYouTubeSearch(initialSearchResult, maxResults = 32) {
   const apiBase = `${process.env.REACT_APP_YT_API_BASE}/search?`;
@@ -24,8 +24,8 @@ export default function useYouTubeSearch(initialSearchResult, maxResults = 32) {
       .then((result) => {
         setSearchResult(toVideoListFromSearch(result.data.items));
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        setSearchResult([]);
       });
   };
 

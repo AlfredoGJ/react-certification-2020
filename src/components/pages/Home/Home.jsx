@@ -2,8 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import Grid from '../../atoms/Grid/Grid';
 import DetailedVideoCard from '../../organisms/DetailedVideoCard/DetailedVideoCard';
 import StyledHome from './Home.styled';
-import useYouTubeSearch from '../../../utils/hooks/YouTubeAPI/useYouTubeSearch';
 import { GlobalContext } from '../../../providers/GlobalContext/GlobalContextProvider';
+import useYouTubeSearch from '../../../utils/hooks/YouTubeAPI/YoutubeSearch/useYouTubeSearch';
 
 const Home = () => {
   const [state] = useContext(GlobalContext);

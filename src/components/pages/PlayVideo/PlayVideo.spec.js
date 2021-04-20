@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import PlayVideo from './PlayVideo';
 import RenderWithTheme from '../../../utils/RenderWithTheme';
 import mockVideos from '../../../mock/mockVideos';
@@ -12,7 +13,9 @@ describe('Component: PlayVideo', () => {
 
     render(
       <RenderWithTheme>
-        <PlayVideo video={videoToPlay} relatedVideos={relatedVideos} />
+        <BrowserRouter basename="/">
+          <PlayVideo video={videoToPlay} relatedVideos={relatedVideos} />
+        </BrowserRouter>
       </RenderWithTheme>
     );
 

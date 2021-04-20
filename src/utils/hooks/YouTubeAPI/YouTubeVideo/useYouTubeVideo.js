@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { toVideoFromVideoDetails } from '../../YouTubeAPI';
-import useYouTubeSearch from './useYouTubeSearch';
+import { toVideoFromVideoDetails } from '../../../YouTubeAPI';
+import useYouTubeSearch from '../YoutubeSearch/useYouTubeSearch';
 
 export default function useYouTubeVideo(videoId, fallbackVideo) {
   const apiBase = `${process.env.REACT_APP_YT_API_BASE}/videos?`;
@@ -23,8 +23,8 @@ export default function useYouTubeVideo(videoId, fallbackVideo) {
           setVideo(toVideoFromVideoDetails(result.data.items[0]));
         }
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        setVideo(fallbackVideo);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoId]);
