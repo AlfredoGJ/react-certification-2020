@@ -4,10 +4,11 @@ import DetailedVideoCard from '../../organisms/DetailedVideoCard/DetailedVideoCa
 import StyledHome from './Home.styled';
 import { GlobalContext } from '../../../providers/GlobalContext/GlobalContextProvider';
 import useYouTubeSearch from '../../../utils/hooks/YouTubeAPI/YoutubeSearch/useYouTubeSearch';
+import mockVideos from '../../../mock/mockVideos';
 
 const Home = () => {
   const [state] = useContext(GlobalContext);
-  const [searchResults, search] = useYouTubeSearch([], 32);
+  const [searchResults, search] = useYouTubeSearch(mockVideos.items, 32);
 
   useEffect(() => {
     search(state.searchText);

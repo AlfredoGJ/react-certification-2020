@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Grid from '../../atoms/Grid/Grid';
 import DetailedVideoCard from '../../organisms/DetailedVideoCard/DetailedVideoCard';
 import YoutubeEmbed from '../../atoms/YouTubeEmbed/YouTubeEmbed';
 import Text from '../../atoms/Text/Text';
 import Button from '../../atoms/Button/Button';
-import StyledPlayVideo from './PlayVideo.styled';
+import { StyledPlayVideo, VideoList } from './PlayVideo.styled';
 
 const PlayVideo = ({ video, relatedVideos }) => {
+  const listRef = useRef(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      listRef.current.scrollTo({ behavior: 'smooth', top: 0 });
+      console.log(listRef.current);
+    }, 1000);
+  }, [relatedVideos]);
+
   return (
     <StyledPlayVideo>
       <Grid padding={{ left: 3, right: 3, top: 6, bottom: 2 }} lg={12}>
@@ -27,7 +36,8 @@ const PlayVideo = ({ video, relatedVideos }) => {
             <Text variant="body2">{video.description}</Text>
           </Grid>
         </Grid>
-        <Grid lg={5} xl={5} direction="column" padding={{ left: 2 }}>
+
+        <VideoList lg={5} xl={5} direction="column" padding={{ left: 2 }} ref={listRef}>
           {relatedVideos.map((relatedVideo) => {
             return (
               <DetailedVideoCard
@@ -41,7 +51,7 @@ const PlayVideo = ({ video, relatedVideos }) => {
               />
             );
           })}
-        </Grid>
+        </VideoList>
       </Grid>
     </StyledPlayVideo>
   );
