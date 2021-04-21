@@ -26,6 +26,7 @@ describe('component: GlobalContextProvider', () => {
     expect(result.current[0].theme).toEqual(themes.dark);
     expect(result.current[0].searchText).toEqual(initialContext.searchText);
     expect(result.current[0].lastSearch).toEqual(initialContext.lastSearch);
+    expect(result.current[0].user).toEqual(undefined);
   });
 
   test('Dipatching the setSearchText action changes the searchText', () => {
@@ -39,6 +40,7 @@ describe('component: GlobalContextProvider', () => {
     expect(result.current[0].theme).toEqual(initialContext.theme);
     expect(result.current[0].searchText).toEqual('wizeline');
     expect(result.current[0].lastSearch).toEqual(initialContext.lastSearch);
+    expect(result.current[0].user).toEqual(undefined);
   });
 
   test('Dispathing the setLastSearch action changes the lastSearch', () => {
@@ -53,5 +55,20 @@ describe('component: GlobalContextProvider', () => {
     expect(result.current[0].theme).toEqual(initialContext.theme);
     expect(result.current[0].searchText).toEqual('wizeline');
     expect(result.current[0].lastSearch).toEqual('wizeline');
+    expect(result.current[0].user).toEqual(undefined);
+  });
+
+  test('Dispathing the setUser action changes the user', () => {
+    const { result } = renderHook(() => useGlobalContext(), {
+      wrapper: GlobalContextProvider,
+    });
+    act(() => {
+      result.current[1](actions.setUser({ id: 123, name: 'wizeline' }));
+    });
+
+    expect(result.current[0].theme).toEqual(initialContext.theme);
+    expect(result.current[0].searchText).toEqual('');
+    expect(result.current[0].lastSearch).toEqual('');
+    expect(result.current[0].user).toEqual({ id: 123, name: 'wizeline' });
   });
 });

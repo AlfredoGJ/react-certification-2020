@@ -15,6 +15,9 @@ const reducer = (state, action) => {
     case 'SET_THEME':
       return { ...state, theme: action.payload };
 
+    case 'SET_USER':
+      return { ...state, user: action.payload };
+
     default:
       return state;
   }

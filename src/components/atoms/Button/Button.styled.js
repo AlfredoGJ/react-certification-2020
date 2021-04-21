@@ -12,6 +12,7 @@ const StyledButton = styled.button`
     props.variant === 'primary' && {
       color: props.theme.colors.accent,
     }}
+  width:100%;
 `;
 
 export { StyledButton };
