@@ -1,30 +1,42 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { toVideoFromVideoDetails } from '../../../YouTubeAPI';
+import { toVideoListFromVideoDetailsList } from '../../../YouTubeAPI';
 import useYouTubeSearch from '../YoutubeSearch/useYouTubeSearch';
 
-export default function useYouTubeVideo(videoId, fallbackVideo) {
+export default function useYouTubeVideo(
+  videoId,
+  fallbackVideo,
+  related = false,
+  maxRelatedResults = 16,
+  statistics = false,
+  contentDetails = false
+) {
   const apiBase = `${process.env.REACT_APP_YT_API_BASE}/videos?`;
-  const [video, setVideo] = useState(fallbackVideo);
-  const [relatedVideos, , searchRelated] = useYouTubeSearch([]);
+  const [video, setVideo] = useState([fallbackVideo]);
+  const [relatedVideos, , searchRelated] = useYouTubeSearch([], maxRelatedResults);
 
   useEffect(() => {
-    searchRelated(videoId);
+    if (related) {
+      searchRelated(videoId);
+    }
+
     axios
       .get(apiBase, {
         params: {
           key: process.env.REACT_APP_YT_API_KEY,
           id: videoId,
-          part: 'snippet',
+          part: `snippet${statistics ? ',statistics' : ''}${
+            contentDetails ? ',contentDetails' : ''
+          }`,
         },
       })
       .then((result) => {
         if (result.data.items.length) {
-          setVideo(toVideoFromVideoDetails(result.data.items[0]));
+          setVideo(toVideoListFromVideoDetailsList(result.data.items));
         }
       })
       .catch(() => {
-        setVideo(fallbackVideo);
+        setVideo([fallbackVideo]);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoId]);

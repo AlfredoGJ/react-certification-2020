@@ -12,6 +12,7 @@ import {
 import Text from '../../atoms/Text/Text';
 import { GlobalContext } from '../../../providers/GlobalContext/GlobalContextProvider';
 import actions from '../../../providers/GlobalContext/actions';
+import { storage } from '../../../utils/storage';
 
 const LoginForm = () => {
   const [user, setUser] = useState('');
@@ -25,6 +26,7 @@ const LoginForm = () => {
     loginApi(user, pass)
       .then((res) => {
         dispatch(actions.setUser(res));
+        storage.set('currentUser', res);
         history.push('/');
       })
 

@@ -3,6 +3,7 @@ const actions = {
   setLastSearch: () => ({ type: 'SET_LAST_SEARCH' }),
   setTheme: (payload) => ({ type: 'SET_THEME', payload }),
   setUser: (payload) => ({ type: 'SET_USER', payload }),
+  setSidebar: (payload) => ({ type: 'SET_SIDEMENU', payload }),
 };
 
 export default actions;

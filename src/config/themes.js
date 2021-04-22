@@ -2,7 +2,8 @@ const themes = {
   default: {
     colors: {
       accent: '#FF263A',
-      background: '#FAFAFA',
+      secondary: '#ff952c',
+      background: '#F0F2F5', // FAFAFA
       backgroundDark: '#ECEFF0',
       text: '#222222',
       textDark: '#333333',
@@ -16,6 +17,7 @@ const themes = {
   dark: {
     colors: {
       accent: '#015192',
+      secondary: '#513bb1',
       background: '#3b3b3b',
       backgroundDark: '#616161',
       text: '#d6d6d6',

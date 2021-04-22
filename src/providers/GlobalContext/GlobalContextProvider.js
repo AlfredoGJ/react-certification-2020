@@ -1,7 +1,15 @@
 import React, { createContext, useReducer } from 'react';
 import themes from '../../config/themes';
+import { storage } from '../../utils/storage';
 
-const initialContext = { searchText: '', lastSearch: '', theme: themes.default };
+const currentUser = storage.get('currentUser');
+const initialContext = {
+  searchText: '',
+  lastSearch: '',
+  theme: themes.default,
+  sidemenu: false,
+  user: currentUser,
+};
 const GlobalContext = createContext(initialContext);
 
 const reducer = (state, action) => {
@@ -17,6 +25,9 @@ const reducer = (state, action) => {
 
     case 'SET_USER':
       return { ...state, user: action.payload };
+
+    case 'SET_SIDEMENU':
+      return { ...state, sidemenu: action.payload };
 
     default:
       return state;

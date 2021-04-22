@@ -1,15 +1,15 @@
 import React, { useContext, useEffect } from 'react';
 import Grid from '../../atoms/Grid/Grid';
 import DetailedVideoCard from '../../organisms/DetailedVideoCard/DetailedVideoCard';
-import StyledHome from './Home.styled';
 import { GlobalContext } from '../../../providers/GlobalContext/GlobalContextProvider';
 import useYouTubeSearch from '../../../utils/hooks/YouTubeAPI/YoutubeSearch/useYouTubeSearch';
 import mockVideos from '../../../mock/mockVideos';
 
+const channelImagePlaceholder = require('../../../assets/img/default-user.jpg');
+
 const Home = () => {
   const [state] = useContext(GlobalContext);
-  const [searchResults, search] = useYouTubeSearch(mockVideos.items, 32);
-
+  const [searchResults, search] = useYouTubeSearch(mockVideos.items, 8);
   useEffect(() => {
     search(state.searchText);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -21,7 +21,7 @@ const Home = () => {
   }, [state.lastSearch]);
 
   return (
-    <StyledHome>
+    <>
       <Grid direction="" sm={12} padding={{ left: 3, right: 3, top: 6, bottom: 2 }}>
         {searchResults.map((video) => (
           <Grid
@@ -34,17 +34,18 @@ const Home = () => {
             <DetailedVideoCard
               videoId={video.id}
               key={video.id}
-              videoDuration="3:16" // hardcoded meanwhile
               videoTitle={video.title}
               channelName={video.channelTitle}
-              description={video.description}
+              description={video.descriptionShort}
               thumbnail={video.thumbnailHigh}
-              channelImage="https://picsum.photos/100/100"
+              channelImage={channelImagePlaceholder}
+              showChannel
+              targetBase="/watch"
             />
           </Grid>
         ))}
       </Grid>
-    </StyledHome>
+    </>
   );
 };
 

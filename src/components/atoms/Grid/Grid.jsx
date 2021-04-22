@@ -12,7 +12,7 @@ const Grid = React.forwardRef((props, ref) => {
 
 Grid.defaultProps = {
   direction: 'row',
-  justify: 'space-between',
+  justify: 'flex-start',
   alignItems: 'flex-start',
   alignContent: 'flex-start',
   xs: 12,

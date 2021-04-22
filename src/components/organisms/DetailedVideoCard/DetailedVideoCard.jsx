@@ -13,12 +13,14 @@ const DetailedVideoCard = ({
   channelImage,
   videoTitle,
   videoDuration,
+  targetBase,
+  showChannel,
   ...other
 }) => {
   return (
     <Grid direction="column" xs={12} xl={12} {...other}>
       <Grid xs={12}>
-        <Link to={`/watch/${videoId}`}>
+        <Link to={`${targetBase}/${videoId}`}>
           <VideoMiniature imageSource={thumbnail} duration={videoDuration} />
         </Link>
       </Grid>
@@ -28,9 +30,11 @@ const DetailedVideoCard = ({
       <Grid xs={12}>
         <Text variant="body2">{description}</Text>
       </Grid>
-      <Grid xs={12} padding={{ top: 0.5 }}>
-        <ChannelWidget channelName={channelName} imageSource={channelImage} />
-      </Grid>
+      {showChannel && (
+        <Grid xs={12} padding={{ top: 0.5 }}>
+          <ChannelWidget channelName={channelName} imageSource={channelImage} />
+        </Grid>
+      )}
     </Grid>
   );
 };

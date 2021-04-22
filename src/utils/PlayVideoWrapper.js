@@ -10,8 +10,8 @@ const PlayVideoWrapper = () => {
     title: '',
     description: '',
   };
-  const [video, relatedVideos] = useYouTubeVideo(videoId, defaultVideo, true);
-  return <PlayVideo video={video} relatedVideos={relatedVideos} />;
+  const [videos, relatedVideos] = useYouTubeVideo(videoId, defaultVideo, true, 4);
+  return <PlayVideo video={videos[0]} relatedVideos={relatedVideos} />;
 };
 
 export default PlayVideoWrapper;

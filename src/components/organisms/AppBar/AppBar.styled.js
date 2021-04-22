@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import IconButton from '../../molecules/IconButton/IconButton';
+import Avatar from '../../atoms/Avatar/Avatar';
 
 const AppBarBase = styled.div`
   z-index: 300;
@@ -15,4 +16,8 @@ const StyledSearchIcon = styled(IconButton)`
   border: 1px solid red; */
 `;
 
-export { AppBarBase, StyledSearchIcon };
+const StyledAvatar = styled(Avatar)`
+  cursor: pointer;
+`;
+
+export { AppBarBase, StyledSearchIcon, StyledAvatar };

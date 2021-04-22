@@ -34,6 +34,11 @@ const StyledText = styled.div`
       fontSize: '.8rem',
       color: props.theme.colors.error,
     }};
+
+  ${(props) =>
+    props.variant === 'menu' && {
+      fontSize: '.8rem',
+    }};
 `;
 
 export default StyledText;
