@@ -7,9 +7,9 @@ const StyledSideMenu = styled.div`
   height: 100%;
   width: 14rem;
   position: fixed;
-  margin-top: 3.3rem;
+  margin-top: 3.39rem;
   z-index: 300;
-  box-shadow: -0.8rem 1.4rem 1.6rem 0rem ${(props) => props.theme.colors.text};
+  box-shadow: -0.8rem 1.9rem 1.6rem 0rem ${(props) => props.theme.colors.text};
 `;
 
 export default StyledSideMenu;

@@ -34,91 +34,95 @@ const AppBar = () => {
   return (
     location.pathname !== '/login' &&
     location.pathname !== '/notFound' && (
-      <AppBarBase>
-        <Grid justify="space-between" xs={12}>
-          <Grid xs={2} sm={2} md={2} lg={2} xl={2} justify="flex-start">
-            <IconButton
-              iconName="bars"
-              color="textDark"
-              size={1}
-              rounded
-              onClick={() => dispatch(actions.setSidebar(!state.sidemenu))}
-            />
-            <IconButton
-              iconName="paint-brush"
-              color="textDark"
-              size={1}
-              rounded
-              onClick={() => setThemesOpen(!themesOpen)}
-            />
-            <Menu open={themesOpen}>
-              <MenuItem
-                onClick={() => {
-                  setThemesOpen(false);
-                  dispatch(actions.setTheme(themes.default));
-                }}
-              >
-                Default
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  setThemesOpen(false);
-                  dispatch(actions.setTheme(themes.dark));
-                }}
-              >
-                Dark
-              </MenuItem>
-            </Menu>
-          </Grid>
-          <Grid justify="space-evenly" direction="row" xs={8} sm={8} md={8} lg={8} xl={8}>
-            <Grid xs={10} sm={10} md={10} lg={10} xl={10} padding={{ right: 0.2 }}>
-              <Input
-                placeholder="Search something..."
-                value={state.searchText}
-                onChange={(e) => dispatch(actions.setSearchText(e.target.value))}
-              />
-            </Grid>
-            <Grid xs={2} sm={2} md={2} lg={2} xl={2}>
-              <StyledSearchIcon
+      <>
+        <AppBarBase>
+          <Grid justify="space-between" xs={12}>
+            <Grid xs={2} sm={2} md={2} lg={2} xl={2} justify="flex-start">
+              <IconButton
+                iconName="bars"
                 color="textDark"
-                size={1.2}
-                iconName="search"
+                size={1}
                 rounded
-                background="backgroundDark"
-                onClick={() => dispatch(actions.setLastSearch())}
+                onClick={() => dispatch(actions.setSidebar(!state.sidemenu))}
               />
-            </Grid>
-          </Grid>
-          <Grid direction="row" justify="flex-end" xs={2} sm={2} md={2} lg={2} xl={2}>
-            {/* <Grid  direction = "row-reverse"> */}
-
-            {/* </Grid> */}
-            {/* <Grid direction = "row-reverse" > */}
-            <Grid padding={{ right: 3 }}>
-              <Menu open={loginOpen}>
+              <IconButton
+                iconName="paint-brush"
+                color="textDark"
+                size={1}
+                rounded
+                onClick={() => setThemesOpen(!themesOpen)}
+              />
+              <Menu open={themesOpen}>
                 <MenuItem
                   onClick={() => {
-                    setLoginOpen(false);
-                    if (state.user) logOut();
-                    else logIn();
+                    setThemesOpen(false);
+                    dispatch(actions.setTheme(themes.default));
                   }}
                 >
-                  {state.user ? 'Log Out' : 'Log In'}
+                  Default
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    setThemesOpen(false);
+                    dispatch(actions.setTheme(themes.dark));
+                  }}
+                >
+                  Dark
                 </MenuItem>
               </Menu>
             </Grid>
+            <Grid
+              justify="space-evenly"
+              direction="row"
+              xs={8}
+              sm={8}
+              md={8}
+              lg={8}
+              xl={8}
+            >
+              <Grid xs={10} sm={10} md={10} lg={10} xl={10} padding={{ right: 0.2 }}>
+                <Input
+                  placeholder="Search something..."
+                  value={state.searchText}
+                  onChange={(e) => dispatch(actions.setSearchText(e.target.value))}
+                />
+              </Grid>
+              <Grid xs={2} sm={2} md={2} lg={2} xl={2}>
+                <StyledSearchIcon
+                  color="textDark"
+                  size={1.2}
+                  iconName="search"
+                  rounded
+                  background="backgroundDark"
+                  onClick={() => dispatch(actions.setLastSearch())}
+                />
+              </Grid>
+            </Grid>
+            <Grid direction="row" justify="flex-end" xs={2} sm={2} md={2} lg={2} xl={2}>
+              <Grid justify="flex-end">
+                <StyledAvatar
+                  src={state.user ? state.user.avatarUrl : defaultUserPic}
+                  size={2}
+                  shape="circle"
+                  onClick={() => setLoginOpen(!loginOpen)}
+                />
 
-            <StyledAvatar
-              src={state.user ? state.user.avatarUrl : defaultUserPic}
-              size={2}
-              shape="circle"
-              onClick={() => setLoginOpen(!loginOpen)}
-            />
-
-            {/* </Grid> */}
+                <Menu open={loginOpen} top={2} left={-12}>
+                  <MenuItem
+                    onClick={() => {
+                      setLoginOpen(false);
+                      if (state.user) logOut();
+                      else logIn();
+                    }}
+                  >
+                    {state.user ? 'Log Out' : 'Log In'}
+                  </MenuItem>
+                </Menu>
+              </Grid>
+            </Grid>
           </Grid>
-        </Grid>
-      </AppBarBase>
+        </AppBarBase>
+      </>
     )
   );
 };
