@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Redirect } from 'react-router';
-import Favorites from '../components/pages/Favorites/Favorites';
-import { GlobalContext } from '../providers/GlobalContext/GlobalContextProvider';
-import { getUserData } from './UserDataStorage';
+import Favorites from '../../components/pages/Favorites/Favorites';
+import { GlobalContext } from '../../providers/GlobalContext/GlobalContextProvider';
+import { getUserData } from '../UserDataStorage';
 
 const FavoritesWrapper = () => {
   const [state] = useContext(GlobalContext);

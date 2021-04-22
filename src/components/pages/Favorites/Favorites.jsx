@@ -18,6 +18,8 @@ const Favorites = ({ favoritesStr }) => {
           padding={{ top: 1, left: 1, right: 1, bottom: 1 }}
         >
           <DetailedVideoCard
+            id={video.id}
+            data-testid="fav-video"
             videoId={video.id}
             key={video.id}
             videoTitle={video.title}

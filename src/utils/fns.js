@@ -1,6 +1,3 @@
-function random(limit) {
-  return Math.floor(Math.random() * limit);
-}
 function convertTime(duration) {
   let durationTemp = duration;
   let a = duration.match(/\d+/g);
@@ -49,4 +46,4 @@ function convertTime(duration) {
   return `${hours}:${minutes}:${durationTemp}`;
 }
 
-export { random, convertTime };
+export { convertTime };

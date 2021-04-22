@@ -1,19 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import { GlobalContextProvider } from '../../../providers/GlobalContext/GlobalContextProvider';
 import RenderWithTheme from '../../../utils/RenderWithTheme';
 import AppBar from './AppBar';
 
 describe('component: AppBar', () => {
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(
+  it('Renders properly', () => {
+    render(
       <GlobalContextProvider>
-        <RenderWithTheme>
-          <AppBar />
-        </RenderWithTheme>
-      </GlobalContextProvider>,
-      div
+        <BrowserRouter basename="/">
+          <RenderWithTheme>
+            <AppBar />
+          </RenderWithTheme>
+        </BrowserRouter>
+      </GlobalContextProvider>
     );
   });
 });

@@ -9,7 +9,7 @@ const channelImagePlaceholder = require('../../../assets/img/default-user.jpg');
 
 const Home = () => {
   const [state] = useContext(GlobalContext);
-  const [searchResults, search] = useYouTubeSearch(mockVideos.items, 8);
+  const [searchResults, search] = useYouTubeSearch(mockVideos.items, 16);
   useEffect(() => {
     search(state.searchText);
     // eslint-disable-next-line react-hooks/exhaustive-deps

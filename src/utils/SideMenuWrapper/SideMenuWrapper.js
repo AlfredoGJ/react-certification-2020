@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router';
 import { useLocation } from 'react-router-dom';
-import SideMenu from '../components/molecules/SideMenu/SideMenu';
-import { GlobalContext } from '../providers/GlobalContext/GlobalContextProvider';
-import MenuItem from '../components/atoms/MenuItem/MenuItem';
-import Icon from '../components/atoms/Icon/Icon';
-import actions from '../providers/GlobalContext/actions';
-import Grid from '../components/atoms/Grid/Grid';
+import SideMenu from '../../components/molecules/SideMenu/SideMenu';
+import { GlobalContext } from '../../providers/GlobalContext/GlobalContextProvider';
+import MenuItem from '../../components/atoms/MenuItem/MenuItem';
+import Icon from '../../components/atoms/Icon/Icon';
+import actions from '../../providers/GlobalContext/actions';
+import Grid from '../../components/atoms/Grid/Grid';
 
 const SideMenuWrapper = () => {
   const [state, dispatch] = useContext(GlobalContext);

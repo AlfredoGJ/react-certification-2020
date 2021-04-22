@@ -94,7 +94,10 @@ const AppBar = () => {
                   iconName="search"
                   rounded
                   background="backgroundDark"
-                  onClick={() => dispatch(actions.setLastSearch())}
+                  onClick={() => {
+                    history.push('/');
+                    dispatch(actions.setLastSearch());
+                  }}
                 />
               </Grid>
             </Grid>
