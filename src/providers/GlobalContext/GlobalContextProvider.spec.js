@@ -5,7 +5,13 @@ import useGlobalContext from './useGlobalContext';
 import actions from './actions';
 
 describe('component: GlobalContextProvider', () => {
-  const initialContext = { searchText: '', lastSearch: '', theme: themes.default };
+  const initialContext = {
+    searchText: '',
+    lastSearch: '',
+    theme: themes.find((t) => t.name === 'default'),
+    user: null,
+    sidemenu: false,
+  };
   test('The initial state and dispatch functions are available', () => {
     const { result } = renderHook(() => useGlobalContext(), {
       wrapper: GlobalContextProvider,
@@ -26,7 +32,7 @@ describe('component: GlobalContextProvider', () => {
     expect(result.current[0].theme).toEqual(themes.dark);
     expect(result.current[0].searchText).toEqual(initialContext.searchText);
     expect(result.current[0].lastSearch).toEqual(initialContext.lastSearch);
-    expect(result.current[0].user).toEqual(undefined);
+    expect(result.current[0].user).toEqual(null);
   });
 
   test('Dipatching the setSearchText action changes the searchText', () => {
@@ -40,7 +46,7 @@ describe('component: GlobalContextProvider', () => {
     expect(result.current[0].theme).toEqual(initialContext.theme);
     expect(result.current[0].searchText).toEqual('wizeline');
     expect(result.current[0].lastSearch).toEqual(initialContext.lastSearch);
-    expect(result.current[0].user).toEqual(undefined);
+    expect(result.current[0].user).toEqual(null);
   });
 
   test('Dispathing the setLastSearch action changes the lastSearch', () => {
@@ -55,7 +61,7 @@ describe('component: GlobalContextProvider', () => {
     expect(result.current[0].theme).toEqual(initialContext.theme);
     expect(result.current[0].searchText).toEqual('wizeline');
     expect(result.current[0].lastSearch).toEqual('wizeline');
-    expect(result.current[0].user).toEqual(undefined);
+    expect(result.current[0].user).toEqual(null);
   });
 
   test('Dispathing the setUser action changes the user', () => {

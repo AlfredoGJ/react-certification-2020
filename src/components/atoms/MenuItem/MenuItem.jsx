@@ -3,7 +3,7 @@ import { StyledMenuItem } from './MenuItem.styled';
 
 const MenuItem = ({ onClick, children, selected }) => {
   return (
-    <StyledMenuItem onClick={onClick} selected={selected}>
+    <StyledMenuItem data-testid="menu-option" onClick={onClick} selected={selected}>
       {children}
     </StyledMenuItem>
   );

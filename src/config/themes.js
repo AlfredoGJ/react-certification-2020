@@ -1,5 +1,6 @@
-const themes = {
-  default: {
+const themes = [
+  {
+    name: 'default',
     colors: {
       accent: '#FF263A',
       secondary: '#ff952c',
@@ -14,7 +15,9 @@ const themes = {
       white: 'fff',
     },
   },
-  dark: {
+
+  {
+    name: 'dark',
     colors: {
       accent: '#015192',
       secondary: '#513bb1',
@@ -29,6 +32,6 @@ const themes = {
       white: 'fff',
     },
   },
-};
+];
 
 export default themes;

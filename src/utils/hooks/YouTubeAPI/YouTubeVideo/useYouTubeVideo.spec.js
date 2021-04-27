@@ -39,12 +39,12 @@ describe('useYoutubeVideo hook', () => {
       apiServer.close();
     });
 
-    it('The fallback video is returned  if an incorrect videoId id provided', async () => {
+    it('An array with the fallback video is returned  if an incorrect videoId id provided', async () => {
       const { result, waitForNextUpdate } = renderHook(() =>
         useYouTubeVideo(null, fallbackVideo)
       );
       await waitForNextUpdate();
-      expect(result.current[0]).toEqual(fallbackVideo);
+      expect(result.current[0]).toEqual([fallbackVideo]);
     });
 
     it('The related videos list is an empty array if an incorrect videoId id provided', async () => {
@@ -55,13 +55,14 @@ describe('useYoutubeVideo hook', () => {
       expect(result.current[1]).toEqual([]);
     });
 
-    it('A correct videoId brings a video and a list of related videos', async () => {
+    it('A correct videoId brings a video and a list of related videos when  related = "true"', async () => {
       const { result, waitForNextUpdate } = renderHook(() =>
-        useYouTubeVideo('pLJwsLH_7sg', fallbackVideo)
+        useYouTubeVideo('pLJwsLH_7sg', fallbackVideo, true, relatedLength)
       );
       await waitForNextUpdate();
       expect(typeof result.current[0]).toBe('object');
       expect(Array.isArray(result.current[1])).toBe(true);
+      console.log(result.current[1]);
       expect(result.current[1].length).toEqual(relatedLength);
     });
   });

@@ -46,6 +46,7 @@ const AppBar = () => {
                 onClick={() => dispatch(actions.setSidebar(!state.sidemenu))}
               />
               <IconButton
+                ariaLabel="themes"
                 iconName="paint-brush"
                 color="textDark"
                 size={1}
@@ -53,22 +54,17 @@ const AppBar = () => {
                 onClick={() => setThemesOpen(!themesOpen)}
               />
               <Menu open={themesOpen}>
-                <MenuItem
-                  onClick={() => {
-                    setThemesOpen(false);
-                    dispatch(actions.setTheme(themes.default));
-                  }}
-                >
-                  Default
-                </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    setThemesOpen(false);
-                    dispatch(actions.setTheme(themes.dark));
-                  }}
-                >
-                  Dark
-                </MenuItem>
+                {themes.map((theme) => (
+                  <MenuItem
+                    key={theme.name}
+                    onClick={() => {
+                      setThemesOpen(false);
+                      dispatch(actions.setTheme(theme));
+                    }}
+                  >
+                    {theme.name}
+                  </MenuItem>
+                ))}
               </Menu>
             </Grid>
             <Grid
@@ -104,6 +100,7 @@ const AppBar = () => {
             <Grid direction="row" justify="flex-end" xs={2} sm={2} md={2} lg={2} xl={2}>
               <Grid justify="flex-end">
                 <StyledAvatar
+                  alt="user-image"
                   src={state.user ? state.user.avatarUrl : defaultUserPic}
                   size={2}
                   shape="circle"

@@ -6,7 +6,7 @@ const currentUser = storage.get('currentUser');
 const initialContext = {
   searchText: '',
   lastSearch: '',
-  theme: themes.default,
+  theme: themes.find((t) => t.name === 'default'),
   sidemenu: false,
   user: currentUser,
 };
@@ -35,7 +35,7 @@ const reducer = (state, action) => {
 };
 
 const GlobalContextProvider = (props) => {
-  const context = useReducer(reducer, initialContext);
+  const context = useReducer(reducer, props.context || initialContext);
 
   return (
     <GlobalContext.Provider value={context}>{props.children}</GlobalContext.Provider>

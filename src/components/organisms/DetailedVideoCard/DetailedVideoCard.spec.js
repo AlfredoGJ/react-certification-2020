@@ -14,6 +14,7 @@ describe('component: DetailedVideoCard', () => {
       <RenderWithTheme>
         <BrowserRouter basename="/">
           <DetailedVideoCard
+            targetBase="/watch"
             videoId={video.id}
             description={video.description}
             videoTitle={video.title}
