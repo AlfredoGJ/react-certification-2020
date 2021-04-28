@@ -21,4 +21,11 @@ const StyledDuration = styled.div`
   color: white;
 `;
 
-export { StyledDuration, StyledImage, StyledMiniatureBase };
+const StyledButtonWrapper = styled.div`
+  color: ${(props) => props.theme.colors.accent};
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+`;
+
+export { StyledDuration, StyledImage, StyledMiniatureBase, StyledButtonWrapper };

@@ -4,6 +4,7 @@ const actions = {
   setTheme: (payload) => ({ type: 'SET_THEME', payload }),
   setUser: (payload) => ({ type: 'SET_USER', payload }),
   setSidebar: (payload) => ({ type: 'SET_SIDEMENU', payload }),
+  setFavoritesTracker: () => ({ type: 'FAVS_TRACKER' }),
 };
 
 export default actions;

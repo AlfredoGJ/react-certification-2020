@@ -1,65 +1,23 @@
-import React, { useRef, useEffect, useContext, useState } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import Grid from '../../atoms/Grid/Grid';
 import DetailedVideoCard from '../../organisms/DetailedVideoCard/DetailedVideoCard';
 import YoutubeEmbed from '../../atoms/YouTubeEmbed/YouTubeEmbed';
 import Text from '../../atoms/Text/Text';
 import Button from '../../atoms/Button/Button';
 import { GlobalContext } from '../../../providers/GlobalContext/GlobalContextProvider';
-import { saveUserData, getUserData } from '../../../utils/UserDataStorage';
 import { VideoList } from './PlayVideo.styled';
+import useFavorites from '../../../utils/hooks/useFavorites/useFavorites';
 
 const PlayVideo = ({ video, relatedVideos }) => {
   const listRef = useRef(null);
   const [state] = useContext(GlobalContext);
-
-  const [isFav, setIsFav] = useState(false);
-
-  function calcIsFav() {
-    const userData = getUserData(state.user);
-    if (userData) {
-      if (userData.favorites.includes(video.id)) setIsFav(true);
-      else setIsFav(false);
-    }
-  }
-
-  useEffect(() => {
-    calcIsFav();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [video]);
-
-  useEffect(() => {
-    calcIsFav();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [isFav, toggle] = useFavorites(video.id);
 
   useEffect(() => {
     setTimeout(() => {
       listRef.current.scrollTo({ behavior: 'smooth', top: 0 });
-      console.log(listRef.current);
     }, 1000);
   }, [relatedVideos]);
-
-  function saveToFavorites() {
-    if (video.id) {
-      const userData = getUserData(state.user);
-      if (!userData.favorites.includes(video.id)) {
-        userData.favorites.push(video.id);
-        saveUserData(state.user, userData);
-        setIsFav(true);
-      }
-    }
-  }
-
-  function removeFromFavorites() {
-    if (video.id) {
-      const userData = getUserData(state.user);
-      if (userData.favorites.includes(video.id)) {
-        userData.favorites = userData.favorites.filter((fav) => video.id !== fav);
-        saveUserData(state.user, userData);
-        setIsFav(false);
-      }
-    }
-  }
 
   return (
     <Grid
@@ -83,8 +41,7 @@ const PlayVideo = ({ video, relatedVideos }) => {
               <Button
                 variant="primary"
                 onClick={() => {
-                  if (isFav) removeFromFavorites();
-                  else saveToFavorites();
+                  toggle();
                 }}
               >
                 {!isFav ? 'add to favorites' : 'remove from favorites'}
@@ -118,6 +75,7 @@ const PlayVideo = ({ video, relatedVideos }) => {
                 thumbnail={relatedVideo.thumbnailMedium}
                 description={relatedVideo.descriptionShort}
                 targetBase="/watch"
+                favable
                 videoDuration={relatedVideo.duration}
                 // channelImage={channelImagePlaceholder}
               />

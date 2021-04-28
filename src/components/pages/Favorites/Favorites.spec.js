@@ -10,15 +10,15 @@ import { toVideoListFromSearch } from '../../../utils/YouTubeAPI';
 describe('Page: Favorites', () => {
   it('Renders correctly', () => {
     const favVideos = toVideoListFromSearch(mockVideos.items);
-    const favoriteStr = favVideos
-      .map((fav) => fav.id)
-      .reduce((prev, current) => `${prev},${current}`);
+    // const favoriteStr = favVideos
+    //   .map((fav) => fav.id)
+    //   .reduce((prev, current) => `${prev},${current}`);
 
     render(
       <BrowserRouter>
         <GlobalContextProvider>
           <RenderWithTheme>
-            <Favorites favoritesStr={favoriteStr} />
+            <Favorites videos={favVideos} />
           </RenderWithTheme>
         </GlobalContextProvider>
       </BrowserRouter>

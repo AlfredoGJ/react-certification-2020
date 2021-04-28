@@ -29,6 +29,9 @@ const reducer = (state, action) => {
     case 'SET_SIDEMENU':
       return { ...state, sidemenu: action.payload };
 
+    case 'FAVS_TRACKER':
+      return { ...state, favsTracker: !state.favsTracker };
+
     default:
       return state;
   }

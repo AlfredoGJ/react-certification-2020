@@ -4,6 +4,7 @@ import Grid from '../../atoms/Grid/Grid';
 import ChannelWidget from '../ChannelWidget/ChannelWidget';
 import Text from '../../atoms/Text/Text';
 import { VideoMiniature } from '../../molecules';
+import useFavorites from '../../../utils/hooks/useFavorites/useFavorites';
 
 const DetailedVideoCard = ({
   videoId,
@@ -15,13 +16,28 @@ const DetailedVideoCard = ({
   videoDuration,
   targetBase,
   showChannel,
+  favable,
+  onFabClick,
   ...other
 }) => {
+  const [isFab, toggle] = useFavorites(videoId);
+
+  function handleFabClick(e) {
+    e.preventDefault();
+    toggle();
+  }
+
   return (
     <Grid direction="column" xs={12} xl={12} {...other}>
       <Grid xs={12}>
         <Link to={`${targetBase}/${videoId}`}>
-          <VideoMiniature imageSource={thumbnail} duration={videoDuration} />
+          <VideoMiniature
+            imageSource={thumbnail}
+            duration={videoDuration}
+            favable={favable}
+            isFav={isFab}
+            onFabClick={handleFabClick}
+          />
         </Link>
       </Grid>
       <Grid xs={12} lg={12} xl={12} padding={{ top: 0.5 }}>

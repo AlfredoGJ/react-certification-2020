@@ -12,19 +12,20 @@ export default function useYouTubeVideo(
   contentDetails = false
 ) {
   const apiBase = `${process.env.REACT_APP_YT_API_BASE}/videos?`;
-  const [video, setVideo] = useState([fallbackVideo]);
+  const [video, setVideo] = useState([]);
   const [relatedVideos, , searchRelated] = useYouTubeSearch([], maxRelatedResults);
+  const [videoIds, setVideoIds] = useState(videoId);
 
-  useEffect(() => {
+  function search() {
     if (related) {
-      searchRelated(videoId);
+      searchRelated(videoIds);
     }
 
     axios
       .get(apiBase, {
         params: {
           key: process.env.REACT_APP_YT_API_KEY,
-          id: videoId,
+          id: videoIds,
           part: `snippet${statistics ? ',statistics' : ''}${
             contentDetails ? ',contentDetails' : ''
           }`,
@@ -38,8 +39,17 @@ export default function useYouTubeVideo(
       .catch(() => {
         setVideo([fallbackVideo]);
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [videoId]);
+  }
 
-  return [video, relatedVideos];
+  useEffect(() => {
+    search();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    search();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [videoIds]);
+
+  return [video, relatedVideos, setVideoIds];
 }
