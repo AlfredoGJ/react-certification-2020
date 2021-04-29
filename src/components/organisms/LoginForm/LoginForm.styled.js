@@ -14,6 +14,7 @@ const StyledLoginForm = styled.form`
 `;
 
 const StyledLabel = styled.label`
+  color: ${(props) => props.theme.colors.text};
   font-size: 0.8rem;
   margin-bottom: 0.8rem;
 `;

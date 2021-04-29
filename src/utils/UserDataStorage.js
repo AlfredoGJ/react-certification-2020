@@ -14,14 +14,9 @@ function getUserData(user) {
       data = { favorites: [] };
       saveUserData(user.id, data);
     }
+  } else {
+    data = { favorites: [] };
   }
-  // else {
-  //   data = storage.get('0000');
-  //   if (data === null) {
-  //     data = { favorites: [] };
-  //     saveUserData({id:'0000'}, data);
-  //   }
-  // }
   return data;
 }
 

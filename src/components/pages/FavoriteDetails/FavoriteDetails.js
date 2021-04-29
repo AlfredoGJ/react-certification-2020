@@ -2,6 +2,7 @@ import React from 'react';
 import Text from '../../atoms/Text/Text';
 import Grid from '../../atoms/Grid/Grid';
 import { VideoMiniature } from '../../molecules';
+import Icon from '../../atoms/Icon/Icon';
 
 const FavoriteDetails = ({ video }) => {
   console.log(video);
@@ -20,17 +21,17 @@ const FavoriteDetails = ({ video }) => {
             <Text variant="h2">Duration</Text>
             <Text variant="body">{video.duration}</Text>
           </Grid>
-          <Grid sm={12} direction="column">
+          <Grid sm={12} direction="column" padding={{ bottom: 1 }}>
             <Text variant="h2">Views</Text>
             <Text variant="body">{video.viewCount}</Text>
           </Grid>
-          <Grid sm={12} direction="column">
-            <Text variant="h2">Likes</Text>
-            <Text variant="body">{video.likeCount}</Text>
+          <Grid sm={12} direction="row" padding={{ bottom: 1 }}>
+            <Icon name="thumbs-up" size={1.6} color="accent" />
+            <Text variant="body"> &nbsp; {video.likeCount}</Text>
           </Grid>
-          <Grid sm={12} direction="column">
-            <Text variant="h2">Dislikes</Text>
-            <Text variant="body">{video.dislikeCount}</Text>
+          <Grid sm={12} direction="row">
+            <Icon name="thumbs-down" size={1.6} color="accent" />
+            <Text variant="body"> &nbsp; {video.dislikeCount}</Text>
           </Grid>
         </Grid>
       </Grid>

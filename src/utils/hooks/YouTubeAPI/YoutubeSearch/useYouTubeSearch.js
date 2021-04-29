@@ -4,6 +4,7 @@ import { toVideoListFromSearch } from '../../../YouTubeAPI';
 
 export default function useYouTubeSearch(initialSearchResult, maxResults = 32) {
   const apiBase = `${process.env.REACT_APP_YT_API_BASE}/search?`;
+  const channelsApiBase = `${process.env.REACT_APP_YT_API_BASE}/channels?`;
   const [searchResult, setSearchResult] = useState(initialSearchResult);
 
   const search = (searchText, videoId) => {
@@ -22,7 +23,30 @@ export default function useYouTubeSearch(initialSearchResult, maxResults = 32) {
         },
       })
       .then((result) => {
-        setSearchResult(toVideoListFromSearch(result.data.items));
+        const videosResult = toVideoListFromSearch(result.data.items);
+        const channelIds = videosResult.reduce(
+          (prev, current) => `${prev},${current.channelId}`,
+          ''
+        );
+        axios
+          .get(channelsApiBase, {
+            params: {
+              key: process.env.REACT_APP_YT_API_KEY,
+              id: channelIds,
+              part: 'snippet',
+            },
+          })
+          .then((channelsResult) => {
+            videosResult.map((video) => {
+              const channel = channelsResult.data.items.find(
+                (c) => c.id === video.channelId
+              );
+              // eslint-disable-next-line no-param-reassign
+              video.channelThumb = channel.snippet.thumbnails.default.url;
+            });
+
+            setSearchResult(videosResult);
+          });
       })
       .catch(() => {
         setSearchResult([]);

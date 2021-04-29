@@ -13,6 +13,7 @@ function toVideoFromSearch(videoResult) {
     thumbnailMedium: videoResult.snippet.thumbnails.medium.url,
     thumbnailHigh: videoResult.snippet.thumbnails.high.url,
     channelTitle: videoResult.snippet.channelTitle,
+    channelId: videoResult.snippet.channelId,
   };
 }
 

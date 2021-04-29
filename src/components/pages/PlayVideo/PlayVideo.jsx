@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext } from 'react';
+import React, { useRef, useEffect, useContext, useState } from 'react';
 import Grid from '../../atoms/Grid/Grid';
 import DetailedVideoCard from '../../organisms/DetailedVideoCard/DetailedVideoCard';
 import YoutubeEmbed from '../../atoms/YouTubeEmbed/YouTubeEmbed';
@@ -7,16 +7,22 @@ import Button from '../../atoms/Button/Button';
 import { GlobalContext } from '../../../providers/GlobalContext/GlobalContextProvider';
 import { VideoList } from './PlayVideo.styled';
 import useFavorites from '../../../utils/hooks/useFavorites/useFavorites';
+import VideoSkeleton from '../../molecules/VideoSkeleton/VideoSkeleton';
 
 const PlayVideo = ({ video, relatedVideos }) => {
   const listRef = useRef(null);
   const [state] = useContext(GlobalContext);
   const [isFav, toggle] = useFavorites(video.id);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      listRef.current.scrollTo({ behavior: 'smooth', top: 0 });
-    }, 1000);
+    setLoading(true);
+    if (relatedVideos.length > 0) {
+      setTimeout(() => {
+        listRef.current.scrollTo({ behavior: 'smooth', top: 0 });
+        setLoading(false);
+      }, 1000);
+    }
   }, [relatedVideos]);
 
   return (
@@ -63,25 +69,31 @@ const PlayVideo = ({ video, relatedVideos }) => {
         padding={{ left: 2 }}
         ref={listRef}
       >
-        {relatedVideos.map((relatedVideo) => {
-          return (
-            <Grid sm={12} md={6} padding={{ bottom: 1 }}>
-              <DetailedVideoCard
-                data-testid="related-video"
-                id={relatedVideo.id}
-                videoId={relatedVideo.id}
-                key={relatedVideo.id}
-                videoTitle={relatedVideo.title}
-                thumbnail={relatedVideo.thumbnailMedium}
-                description={relatedVideo.descriptionShort}
-                targetBase="/watch"
-                favable
-                videoDuration={relatedVideo.duration}
-                // channelImage={channelImagePlaceholder}
-              />
-            </Grid>
-          );
-        })}
+        {loading
+          ? [1, 1, 1, 1, 1, 1].map(() => (
+              <Grid Grid sm={12} md={6} padding={{ bottom: 1 }}>
+                <VideoSkeleton />
+              </Grid>
+            ))
+          : relatedVideos.map((relatedVideo) => {
+              return (
+                <Grid sm={12} md={6} padding={{ bottom: 1 }}>
+                  <DetailedVideoCard
+                    data-testid="related-video"
+                    id={relatedVideo.id}
+                    videoId={relatedVideo.id}
+                    key={relatedVideo.id}
+                    videoTitle={relatedVideo.title}
+                    thumbnail={relatedVideo.thumbnailMedium}
+                    description={relatedVideo.descriptionShort}
+                    targetBase="/watch"
+                    favable={state.user}
+                    videoDuration={relatedVideo.duration}
+                    // channelImage={channelImagePlaceholder}
+                  />
+                </Grid>
+              );
+            })}
       </VideoList>
     </Grid>
   );

@@ -5,6 +5,7 @@ import {
   StyledImage,
   StyledMiniatureBase,
   StyledButtonWrapper,
+  StyledFav,
 } from './VideoMiniature.styled';
 
 const VideoMiniature = ({ imageSource, duration, favable, isFav, onFabClick }) => {
@@ -15,14 +16,26 @@ const VideoMiniature = ({ imageSource, duration, favable, isFav, onFabClick }) =
       {favable && (
         <StyledButtonWrapper>
           {isFav ? (
-            <IconButton iconName="star" color="accent" size={1.6} onClick={onFabClick} />
+            <StyledFav>
+              <IconButton
+                rounded
+                iconName="star"
+                color="accent"
+                size={1.3}
+                onClick={onFabClick}
+                background
+              />
+            </StyledFav>
           ) : (
-            <IconButton
-              iconName="star-o"
-              size={1.6}
-              color="accent"
-              onClick={onFabClick}
-            />
+            <StyledFav>
+              <IconButton
+                rounded
+                iconName="star-o"
+                size={1.3}
+                color="accent"
+                onClick={onFabClick}
+              />
+            </StyledFav>
           )}
         </StyledButtonWrapper>
       )}

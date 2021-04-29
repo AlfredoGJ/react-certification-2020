@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const StyledMenuItem = styled.div`
+  color: ${(props) => props.theme.colors.text};
   display: flex;
   flex-direction: row;
   align-items: center;

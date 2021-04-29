@@ -28,4 +28,20 @@ const StyledButtonWrapper = styled.div`
   top: 1rem;
 `;
 
-export { StyledDuration, StyledImage, StyledMiniatureBase, StyledButtonWrapper };
+const StyledFav = styled.div`
+  &:hover {
+    transform: scale(1.2);
+    transition: all;
+    padding: -2rem;
+    border-radius: 50px;
+    background: rgba(0, 0, 0, 0.3);
+  }
+`;
+
+export {
+  StyledDuration,
+  StyledImage,
+  StyledMiniatureBase,
+  StyledButtonWrapper,
+  StyledFav,
+};

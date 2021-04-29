@@ -12,7 +12,7 @@ const FavoriteDetailsWrapper = () => {
 
   if (!state.user) return <Redirect to="/notFound" />;
 
-  return <FavoriteDetails video={videos[0]} />;
+  return videos.length && <FavoriteDetails video={videos[0]} />;
 };
 
 export default FavoriteDetailsWrapper;
