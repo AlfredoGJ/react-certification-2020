@@ -10,7 +10,7 @@ const channelImagePlaceholder = require('../../../assets/img/default-user.jpg');
 
 const Home = () => {
   const [state] = useContext(GlobalContext);
-  const [searchResults, search] = useYouTubeSearch(mockVideos.items, 8);
+  const [searchResults, search] = useYouTubeSearch(mockVideos.items, 12);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

@@ -37,15 +37,17 @@ export default function useYouTubeSearch(initialSearchResult, maxResults = 32) {
             },
           })
           .then((channelsResult) => {
-            videosResult.map((video) => {
+            const finalResult = videosResult.map((video) => {
               const channel = channelsResult.data.items.find(
                 (c) => c.id === video.channelId
               );
-              // eslint-disable-next-line no-param-reassign
-              video.channelThumb = channel.snippet.thumbnails.default.url;
+              return {
+                ...video,
+                channelThumb: channel.snippet.thumbnails.default.url,
+              };
             });
 
-            setSearchResult(videosResult);
+            setSearchResult(finalResult);
           });
       })
       .catch(() => {
