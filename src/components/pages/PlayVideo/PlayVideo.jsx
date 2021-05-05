@@ -33,7 +33,7 @@ const PlayVideo = ({ video, relatedVideos }) => {
       lg={12}
       direction="row"
     >
-      <Grid xs={12} lg={8} xl={8} direction="column" padding={{ bottom: 2 }}>
+      <Grid xs={12} lg={8} xl={9} direction="column" padding={{ bottom: 2 }}>
         <Grid xs={12}>
           <YoutubeEmbed embedId={video.id} />
         </Grid>
@@ -65,19 +65,19 @@ const PlayVideo = ({ video, relatedVideos }) => {
         sm={12}
         md={12}
         lg={4}
-        xl={4}
-        padding={{ left: 2 }}
+        xl={3}
+        padding={{ left: 0 }}
         ref={listRef}
       >
         {loading
           ? [1, 1, 1, 1, 1, 1].map(() => (
-              <Grid Grid sm={12} md={6} padding={{ bottom: 1 }}>
+              <Grid Grid sm={6} md={6} padding={{ bottom: 1, left: 1, right: 1 }}>
                 <VideoSkeleton />
               </Grid>
             ))
           : relatedVideos.map((relatedVideo) => {
               return (
-                <Grid sm={12} md={6} padding={{ bottom: 1 }}>
+                <Grid sm={12} md={6} padding={{ bottom: 1, left: 1, right: 1 }}>
                   <DetailedVideoCard
                     data-testid="related-video"
                     id={relatedVideo.id}

@@ -62,7 +62,7 @@ const Favorites = ({ videos }) => {
                   videoTitle={video.title}
                   channelName={video.channelTitle}
                   description={video.descriptionShort}
-                  thumbnail={video.thumbnailHigh}
+                  thumbnail={video.thumbnailMedium}
                   channelImage="https://picsum.photos/100/100"
                   targetBase="/profile/favorites"
                   favable

@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import Grid from '../../atoms/Grid/Grid';
 import ChannelWidget from '../ChannelWidget/ChannelWidget';
 import Text from '../../atoms/Text/Text';
 import { VideoMiniature } from '../../molecules';
 import useFavorites from '../../../utils/hooks/useFavorites/useFavorites';
 
+const StyledLink = styled(Link)`
+  width: 100%;
+`;
 const DetailedVideoCard = ({
   videoId,
   description,
@@ -30,7 +34,7 @@ const DetailedVideoCard = ({
   return (
     <Grid direction="column" xs={12} xl={12} {...other}>
       <Grid xs={12}>
-        <Link to={`${targetBase}/${videoId}`}>
+        <StyledLink to={`${targetBase}/${videoId}`}>
           <VideoMiniature
             imageSource={thumbnail}
             duration={videoDuration}
@@ -38,7 +42,7 @@ const DetailedVideoCard = ({
             isFav={isFab}
             onFabClick={handleFabClick}
           />
-        </Link>
+        </StyledLink>
       </Grid>
       <Grid xs={12} lg={12} xl={12} padding={{ top: 0.5 }}>
         <Text variant="h3">{videoTitle}</Text>

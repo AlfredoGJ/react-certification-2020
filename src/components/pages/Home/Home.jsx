@@ -36,13 +36,13 @@ const Home = () => {
   return (
     <Grid direction="" sm={12} padding={{ left: 3, right: 3, top: 6, bottom: 2 }}>
       {loading
-        ? [1, 1, 1, 1, 1, 1, 1, 1].map(() => (
+        ? [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map(() => (
             <Grid
               xs={12}
               md={6}
               lg={3}
               xl={3}
-              padding={{ top: 1, left: 1, right: 1, bottom: 1 }}
+              padding={{ top: 4, left: 1, right: 1, bottom: 1 }}
             >
               <VideoSkeleton />
             </Grid>
@@ -61,7 +61,7 @@ const Home = () => {
                 videoTitle={video.title}
                 channelName={video.channelTitle}
                 description={video.descriptionShort}
-                thumbnail={video.thumbnailHigh}
+                thumbnail={video.thumbnailMedium}
                 channelImage={video.channelThumb || channelImagePlaceholder}
                 showChannel
                 targetBase="/watch"

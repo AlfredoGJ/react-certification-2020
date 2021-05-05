@@ -10,7 +10,7 @@ const FavoriteDetails = ({ video }) => {
     <Grid sm={12} padding={{ left: 0, right: 0, top: 6, bottom: 2 }} direction="column">
       <Grid xs={12} direction="row">
         <Grid xs={12} sm={12} lg={6} xl={6} padding={{ bottom: 2, left: 2, right: 2 }}>
-          <VideoMiniature imageSource={video.thumbnailHigh} />
+          <VideoMiniature imageSource={video.thumbnailMedium} />
         </Grid>
         <Grid sm={12} lg={6} xl={6} direction="column" padding={{ left: 2, right: 2 }}>
           <Grid sm={12} direction="column">
