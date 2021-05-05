@@ -4,7 +4,7 @@ import { AvatarBase, AvatarImg } from './Avatar.styled';
 const Avatar = (props) => {
   return (
     <AvatarBase size={props.size}>
-      <AvatarImg src={props.src} shape={props.shape} />
+      <AvatarImg src={props.src} shape={props.shape} {...props} />
     </AvatarBase>
   );
 };

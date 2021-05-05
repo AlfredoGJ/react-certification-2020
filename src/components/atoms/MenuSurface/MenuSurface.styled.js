@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledMenuContainer = styled.div`
-  position: relative;
+  position: absolute;
   display: inline-block;
 `;
 const StyledMenu = styled.div`
@@ -11,6 +11,10 @@ const StyledMenu = styled.div`
   border-radius: 0.3rem;
   background-color: ${(props) => props.theme.colors.surface};
   position: absolute;
+  top: ${(props) => props.top || 'none'}rem;
+  right: ${(props) => props.right || 'none'}rem;
+  left: ${(props) => props.left || 'none'}rem;
+  bottom: ${(props) => props.bottom || 'none'}rem;
   float: none;
   display: flex;
   flex-direction: column;

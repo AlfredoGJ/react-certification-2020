@@ -13,6 +13,7 @@ const StyledGrid = styled.div`
     width: ${(props) => {
       if (props.xs <= 12) return `${props.xs * 8.333333333333}%`;
     }};
+    flex-wrap: wrap;
   }
 
   @media (min-width: 481px) {
@@ -20,6 +21,7 @@ const StyledGrid = styled.div`
       if (props.sm <= 12) return `${props.sm * 8.333333333333}%`;
       return '100%';
     }};
+    flex-wrap: wrap;
   }
 
   @media (min-width: 769px) {
@@ -27,6 +29,7 @@ const StyledGrid = styled.div`
       if (props.md <= 12) return `${props.md * 8.333333333333}%`;
       return '100%';
     }};
+    flex-wrap: wrap;
   }
 
   @media (min-width: 1025px) {
@@ -34,6 +37,7 @@ const StyledGrid = styled.div`
       if (props.lg <= 12) return `${props.lg * 8.333333333333}%`;
       return '100%';
     }};
+    flex-wrap: wrap;
   }
 
   @media (min-width: 1201px) {
@@ -41,6 +45,7 @@ const StyledGrid = styled.div`
       if (props.xl <= 12) return `${props.xl * 8.333333333333}%`;
       return '100%';
     }};
+    flex-wrap: wrap;
   }
 
   padding-top: ${(props) => props.padding && (props.padding.top || 0)}rem;

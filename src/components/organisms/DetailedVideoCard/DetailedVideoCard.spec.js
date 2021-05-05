@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import RenderWithTheme from '../../../utils/RenderWithTheme';
 import DetailedVideoCard from './DetailedVideoCard';
 import mockVideos from '../../../mock/mockVideos';
@@ -11,11 +12,14 @@ describe('component: DetailedVideoCard', () => {
 
     render(
       <RenderWithTheme>
-        <DetailedVideoCard
-          videoId={video.id}
-          description={video.description}
-          videoTitle={video.title}
-        />
+        <BrowserRouter basename="/">
+          <DetailedVideoCard
+            targetBase="/watch"
+            videoId={video.id}
+            description={video.description}
+            videoTitle={video.title}
+          />
+        </BrowserRouter>
       </RenderWithTheme>
     );
     expect(screen.getByRole('link')).toHaveAttribute('href', `/watch/${video.id}`);
