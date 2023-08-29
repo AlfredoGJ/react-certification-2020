@@ -16,7 +16,7 @@ export default function useYouTubeSearch(initialSearchResult, maxResults = 32) {
         params: {
           type: 'video',
           key: process.env.REACT_APP_YT_API_KEY,
-          part: 'snippet, id',
+          part: 'id,%20snippet',
           maxResults,
           ...searchQuery,
           ...searchRelated,
