@@ -5,11 +5,11 @@ import Text from '../../atoms/Text/Text';
 
 const ChannelWidget = ({ imageSource, channelName }) => {
   return (
-    <Grid direction="row" xs={12}>
-      <Grid xs={1} sm={1} md={1} lg={1} xl={1}>
-        <Avatar src={imageSource} size={1.5} shape="circle" />
+    <Grid direction="row" justify="flex-start">
+      <Grid xl={2} lg={2} md={2} sm={2} xs={2}>
+        <Avatar src={imageSource} size={2} shape="circle" />
       </Grid>
-      <Grid xs={11} sm={11} md={11} lg={11} xl={11} padding={{ left: 0.5 }}>
+      <Grid xl={10} lg={10} md={10} sm={10} xs={10}>
         <Text>{channelName}</Text>
       </Grid>
     </Grid>

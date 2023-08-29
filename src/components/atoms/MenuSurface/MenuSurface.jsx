@@ -4,7 +4,7 @@ import { StyledMenuContainer, StyledMenu } from './MenuSurface.styled';
 const MenuSurface = (props) => {
   return (
     <StyledMenuContainer>
-      <StyledMenu>{props.children}</StyledMenu>
+      <StyledMenu {...props}>{props.children}</StyledMenu>
     </StyledMenuContainer>
   );
 };

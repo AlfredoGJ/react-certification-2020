@@ -1,19 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Home from './Home';
 import RenderWithTheme from '../../../utils/RenderWithTheme';
-import { YoutubeSearchProvider } from '../../../providers/Youtube/SearchProvider';
+import { GlobalContextProvider } from '../../../providers/GlobalContext/GlobalContextProvider';
 
 describe('component: Home', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
-      <YoutubeSearchProvider value={[{}, () => {}]}>
-        <RenderWithTheme>
-          <Home />
-        </RenderWithTheme>
-        ,
-      </YoutubeSearchProvider>,
+      <GlobalContextProvider>
+        <BrowserRouter>
+          <RenderWithTheme>
+            <Home />
+          </RenderWithTheme>
+        </BrowserRouter>
+      </GlobalContextProvider>,
       div
     );
   });

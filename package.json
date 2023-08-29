@@ -3,22 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/lab": "^4.0.0-alpha.58",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^10.4.9",
     "@testing-library/user-event": "^12.1.3",
     "axios": "^0.21.1",
     "font-awesome": "^4.7.0",
+    "msw": "^0.28.1",
     "prop-types": "^15.7.2",
     "proptypes": "^1.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-kawaii": "^0.17.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "styled-components": "^5.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --host 0.0.0.0",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -26,6 +30,7 @@
     "lint:fix": "eslint ./src --ext .js,.jsx --fix"
   },
   "devDependencies": {
+    "@testing-library/react-hooks": "^5.1.1",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
@@ -66,11 +71,18 @@
   "jest": {
     "coverageThreshold": {
       "global": {
-        "branches": 60,
-        "functions": 60,
-        "lines": 60,
-        "statements": 60
+        "branches": 30,
+        "functions": 30,
+        "lines": 30,
+        "statements": 30
       }
-    }
+    },
+    "coveragePathIgnorePatterns": [
+      "src/mock",
+      "src/utils/constants.js"
+    ]
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

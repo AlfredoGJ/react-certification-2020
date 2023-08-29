@@ -1,7 +1,15 @@
 import React, { createContext, useReducer } from 'react';
 import themes from '../../config/themes';
+import { storage } from '../../utils/storage';
 
-const initialContext = { searchText: '', lastSearch: '', theme: themes.default };
+const currentUser = storage.get('currentUser');
+const initialContext = {
+  searchText: '',
+  lastSearch: '',
+  theme: themes.find((t) => t.name === 'default'),
+  sidemenu: false,
+  user: currentUser,
+};
 const GlobalContext = createContext(initialContext);
 
 const reducer = (state, action) => {
@@ -15,13 +23,22 @@ const reducer = (state, action) => {
     case 'SET_THEME':
       return { ...state, theme: action.payload };
 
+    case 'SET_USER':
+      return { ...state, user: action.payload };
+
+    case 'SET_SIDEMENU':
+      return { ...state, sidemenu: action.payload };
+
+    case 'FAVS_TRACKER':
+      return { ...state, favsTracker: !state.favsTracker };
+
     default:
       return state;
   }
 };
 
 const GlobalContextProvider = (props) => {
-  const context = useReducer(reducer, initialContext);
+  const context = useReducer(reducer, props.context || initialContext);
 
   return (
     <GlobalContext.Provider value={context}>{props.children}</GlobalContext.Provider>

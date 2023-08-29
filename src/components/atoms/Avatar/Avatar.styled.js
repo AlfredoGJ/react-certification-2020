@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const AvatarBase = styled.div`
   width: ${(props) => props.size}rem;
-  height: ${(props) => props.size}rem;
 `;
 
 const AvatarImg = styled.img`

@@ -2,13 +2,17 @@ import React from 'react';
 import PropTypes from 'proptypes';
 import StyledGrid from './Grid.styled';
 
-const Grid = (props) => {
-  return <StyledGrid {...props}>{props.children}</StyledGrid>;
-};
+const Grid = React.forwardRef((props, ref) => {
+  return (
+    <StyledGrid ref={ref} {...props}>
+      {props.children}
+    </StyledGrid>
+  );
+});
 
 Grid.defaultProps = {
   direction: 'row',
-  justify: 'space-between',
+  justify: 'flex-start',
   alignItems: 'flex-start',
   alignContent: 'flex-start',
   xs: 12,

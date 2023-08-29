@@ -21,4 +21,27 @@ const StyledDuration = styled.div`
   color: white;
 `;
 
-export { StyledDuration, StyledImage, StyledMiniatureBase };
+const StyledButtonWrapper = styled.div`
+  color: ${(props) => props.theme.colors.accent};
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+`;
+
+const StyledFav = styled.div`
+  &:hover {
+    transform: scale(1.2);
+    transition: all;
+    padding: -2rem;
+    border-radius: 50px;
+    background: rgba(0, 0, 0, 0.3);
+  }
+`;
+
+export {
+  StyledDuration,
+  StyledImage,
+  StyledMiniatureBase,
+  StyledButtonWrapper,
+  StyledFav,
+};

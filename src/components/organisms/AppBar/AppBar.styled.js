@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import IconButton from '../../molecules/IconButton/IconButton';
+import Avatar from '../../atoms/Avatar/Avatar';
+import Menu from '../../molecules/Menu/Menu';
 
 const AppBarBase = styled.div`
   z-index: 300;
@@ -15,4 +17,15 @@ const StyledSearchIcon = styled(IconButton)`
   border: 1px solid red; */
 `;
 
-export { AppBarBase, StyledSearchIcon };
+const StyledAvatar = styled(Avatar)`
+  cursor: pointer;
+`;
+const UserMenu = styled(Menu)`
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  bottom: 0;
+  background-color: red;
+`;
+
+export { AppBarBase, StyledSearchIcon, StyledAvatar, UserMenu };

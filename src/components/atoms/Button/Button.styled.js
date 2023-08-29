@@ -12,6 +12,23 @@ const StyledButton = styled.button`
     props.variant === 'primary' && {
       color: props.theme.colors.accent,
     }}
+  width:100%;
+  &:hover {
+    background-image: linear-gradient(
+      45deg,
+      ${(props) => props.theme.colors.accent} 50%,
+      ${(props) => props.theme.colors.secondary}
+    );
+    color: white;
+  }
+  &:active {
+    transform: translateY(0.05rem);
+    background-image: linear-gradient(
+      45deg,
+      ${(props) => props.theme.colors.accent} 60%,
+      ${(props) => props.theme.colors.secondary}
+    );
+  }
 `;
 
 export { StyledButton };
